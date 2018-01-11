@@ -54,9 +54,7 @@ public class Main01 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
+        
     }
 
 }
