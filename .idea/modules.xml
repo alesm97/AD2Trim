@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AD2Trim.iml" filepath="$PROJECT_DIR$/AD2Trim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBC Connector/JDBC Connector.iml" filepath="$PROJECT_DIR$/JDBC Connector/JDBC Connector.iml" />
     </modules>
   </component>
 </project>
