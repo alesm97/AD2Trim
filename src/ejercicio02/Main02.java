@@ -16,7 +16,7 @@ public class Main02 {
         DatabaseMetaData meta;
         int nColumnas;
 
-        System.out.println("¿Sobre qué desea la información? (asignatura, curso, horario, ofertaeducativa, profesor, repartoprofesores, tramohorario)");
+        System.out.println("¿Sobre qué desea la información? (asignatura, curso, horario, ofertaeducativa, profesor, reparto, tramohorario)");
         tabla = Teclado.leerString();
 
         try {
@@ -26,7 +26,7 @@ public class Main02 {
         }
 
         try {
-            connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario", "java", "java");
+            connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?useSSL=false", "java", "java");
             sents = connmysql.createStatement();
 
             rs = sents.executeQuery(String.format("SELECT * FROM %s", tabla));
@@ -62,7 +62,7 @@ public class Main02 {
 
             System.out.println(String.format("\n\nClaves importadas:"));
             while (pK.next()) {
-                System.out.println(String.format("\tTabla: %s | Campo: %s", pK.getString("FKTABLE_NAME"),pK.getString("PKCOLUMN_NAME")));
+                System.out.println(String.format("\tTabla: %s | Campo: %s", pK.getString("PKTABLE_NAME"),pK.getString("FKCOLUMN_NAME")));
             }
 
             pK = meta.getExportedKeys(null,null,tabla);

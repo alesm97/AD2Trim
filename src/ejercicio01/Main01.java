@@ -45,8 +45,9 @@ public class Main01 {
         }
 
         try {
-            Connection connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true", "java", "java");
+            Connection connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");
             Statement sents = connmysql.createStatement();
+            System.out.println("Ejecutando script...");
             sents.executeUpdate(consulta);
             System.out.println("Script ejecutado con éxito.");
             connmysql.close();
