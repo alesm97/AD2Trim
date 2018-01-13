@@ -19,6 +19,8 @@ public class Main02 {
         System.out.println("¿Sobre qué desea la información? (asignatura, curso, horario, ofertaeducativa, profesor, reparto, tramohorario)");
         tabla = Teclado.leerString();
 
+
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e1) {
