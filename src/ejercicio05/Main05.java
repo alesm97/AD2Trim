@@ -20,7 +20,10 @@ public class Main05 {
         try {
             connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");
             sents = connmysql.createStatement();
-            sents.executeUpdate("UPDATE asignatura SET hTotales = hTotales * 1.1, hSemanales = hSemanales * 1.1 WHERE nombre = 'M%' AND ");
+            sents.executeUpdate("UPDATE asignatura a LEFT JOIN reparto r ON r.codAsig = a.codAsig SET hTotales = hTotales * 1.1, hSemanales = hSemanales * 1.1 WHERE a.nombre LIKE 'M%' AND r.codOe = 'FPB'");
+
+            System.out.println("Actualización realizada con éxito.");
+
             sents.close();
             connmysql.close();
         } catch (SQLException e) {
