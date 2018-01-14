@@ -22,7 +22,7 @@ public class Main16 {
             if (resultado.getMetaData().getColumnCount() == 0) {
                 System.out.println("No hay resultados.");
             } else {
-                
+
                 while (resultado.next()) {
                     System.out.println(String.format("Asignatura: %s\n\tHoras semanales: %s\n\tNº cursos: %s\n\tNº ofertas %s\n\n",resultado.getString(1),resultado.getString(2),resultado.getString(3),resultado.getString(4)));
                 }

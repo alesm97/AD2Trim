@@ -20,7 +20,7 @@ public class Main13 {
         boolean desdoble = false;
         String[] tramos = {"L1", "M1", "X1", "J1", "V1", "L2", "M2", "X2", "J2", "V2", "L3", "M3", "X3", "J3", "V3", "L4", "M4", "X4", "J4", "V4", "L5", "M5", "X5", "J5", "V5", "L6", "M6", "X6", "J6", "V6"};
 
-        /*do{
+        do{
             System.out.println("¿De que oferta educativa quiere hacer la búsqueda? (máximo 3 caracteres)");
             oferta = Teclado.leerString();
         }while(oferta.length()>3);
@@ -28,10 +28,10 @@ public class Main13 {
         do{
             System.out.println("¿De que curso? (máximo 2 caracteres con formato 1A)");
             curso = Teclado.leerString();
-        }while(curso.length()>2 || curso.matches("[1-9][A-Z]]"));*/
+        }while(curso.length()>2 || curso.matches("[1-9][A-Z]]"));
 
-        oferta = "DAM";
-        curso = "1A";
+        /*oferta = "DAM";
+        curso = "1A";*/
 
         try {
             connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");

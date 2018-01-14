@@ -1,10 +1,10 @@
-package ejercicio11;
+package ejercicio17;
 
 import utilidades.Teclado;
 
 import java.sql.*;
 
-public class Main11 {
+public class Main17 {
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -13,9 +13,7 @@ public class Main11 {
         }
 
         Connection connmysql = null;
-        Statement sents;
-        ResultSet resultado;
-        String asignatura,oferta,curso;
+        String oferta,curso;
 
         do{
             System.out.println("¿De que oferta educativa quiere hacer la búsqueda? (máximo 3 caracteres)");
@@ -27,32 +25,28 @@ public class Main11 {
             curso = Teclado.leerString();
         }while(curso.length()>2 || curso.matches("[1-9][A-Z]]"));
 
-        do{
-            System.out.println("¿De que asignatura? (máximo 5 caracteres, desdobles empiezan por @)");
-            asignatura = Teclado.leerString();
-        }while(asignatura.length()>5);
-
-
-        /*asignatura = "SGE";
-        oferta = "DAM";
+        /*oferta = "SMR";
         curso = "2A";*/
 
         try {
             connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");
-            sents = connmysql.createStatement();
-            resultado = sents.executeQuery(String.format("SELECT codTramo FROM horario WHERE codAsig = '%s' AND codOe = '%s' AND codCurso = '%s' ORDER BY 1",asignatura,oferta,curso));
 
-            if(resultado.getMetaData().getColumnCount()==0){
-                System.out.println("No ha habido resultados.");
-            }else{
-                System.out.printf("\nTramos:\n");
+            String sql= " { ? = call obtenerTutor (?, ?) } ";
+            CallableStatement llamada= connmysql.prepareCall(sql);
+            llamada.registerOutParameter(1,Types.VARCHAR);
+            llamada.setString(2,oferta);
+            llamada.setString(3,curso);
 
-                while (resultado.next()) {
-                    System.out.printf("%s ", resultado.getString(1));
-                }
+            llamada.execute();
+
+            if (llamada.getString(1) == null) {
+                System.out.println("No hay resultados.");
+            } else {
+                System.out.printf("El curso %s %s tiene como tutor/a a %s.",oferta,curso,llamada.getString(1));
             }
 
-            sents.close();
+
+            llamada.close();
             connmysql.close();
         } catch (SQLException e) {
             e.printStackTrace();

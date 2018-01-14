@@ -1,8 +1,9 @@
 package ejercicio15;
 
+import utilidades.Teclado;
+
 import java.sql.*;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -19,13 +20,13 @@ public class Main15 {
         ResultSet resultado;
         String prof, tramo = null;
 
-        /*do{
+        do{
             System.out.println("¿De que profesor quiere hacer la búsqueda? (máximo 3 caracteres)");
             prof = Teclado.leerString();
-        }while(prof.length()>3);*/
+        }while(prof.length()>3);
 
 
-        prof = "DQS";
+        /*prof = "DQS";*/
 
         try {
             connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");

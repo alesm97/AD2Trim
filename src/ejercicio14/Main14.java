@@ -17,19 +17,19 @@ public class Main14 {
         ResultSet resultado;
         String prof, tramo;
 
-        /*do{
+        do{
             System.out.println("¿De que profesor quiere hacer la búsqueda? (máximo 3 caracteres)");
             prof = Teclado.leerString();
-        }while(prof.length()>3);*/
+        }while(prof.length()>3);
 
-        /*do{
+        do{
             System.out.println("¿De que tramo horario? (máximo 2 caracteres formato L1-V6)");
             tramo = Teclado.leerString();
-        }while(prof.length()>2 && !tramo.matches("[LMXJV][1-6]"));*/
+        }while(prof.length()>2 && !tramo.matches("[LMXJV][1-6]"));
 
 
-        prof = "DQS";
-        tramo = "L1";
+        /*prof = "DQS";
+        tramo = "L1";*/
 
         try {
             connmysql = DriverManager.getConnection("jdbc:mysql://localhost/horario?allowMultiQueries=true&useSSL=false", "java", "java");
